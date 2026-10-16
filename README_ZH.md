@@ -20,15 +20,44 @@ git clone https://github.com/wanaigc/comfyui-moss-Image.git
 
 重启 ComfyUI 即可。插件复用 ComfyUI 自带的 Python 依赖，无需额外安装。
 
+## 模型文件
+
+| 组件             | 文件                                                          | 大小    | 格式                                            |
+| ---------------- | ------------------------------------------------------------- | ------- | ----------------------------------------------- |
+| **DiT**          | `diffusion_models/moss_image_sft_int8_convrot.safetensors`    | 5.25 GB | INT8 ConvRot（Modulation、Layer 0 & 41 为 BF16） |
+| **Text Encoder** | `text_encoders/qwen35_moss_int8_convrot.safetensors`         | 8.65 GB | INT8 ConvRot（SSM、Layer 31 为 BF16）           |
+| **VAE**          | `vae/flux2-vae.safetensors`                                    | 238 MB  | FP32（FLUX.2 Small Decoder，384ch）             |
+
+将文件放到 ComfyUI 对应目录：
+
+```
+📂 ComfyUI/
+├── 📂 models/
+│   ├── 📂 diffusion_models/
+│   │   └── moss_image_sft_int8_convrot.safetensors
+│   ├── 📂 text_encoders/
+│   │   └── qwen35_moss_int8_convrot.safetensors
+│   └── 📂 vae/
+│       └── flux2-vae.safetensors
+```
+
+## 推荐参数
+
+| 设置                    | 值                       | 备注                                                |
+| ----------------------- | ------------------------ | --------------------------------------------------- |
+| **采样器 (Sampler)**    | `euler`                  | Flow-matching Euler                                  |
+| **调度器 (Scheduler)**  | `sgm_uniform`            | 与 flow-matching shift 配对                         |
+| **步数 (Steps)**        | `50`                     | 建议 30–50 步                                       |
+| **CFG**                 | `3.0`                    | 建议 2.5–3.5                                        |
+| **Shift**               | `5.0`                    | 在 `ModelSamplingSD3` 节点中设置                    |
+| **Skip Layer Guidance** | `22`                     | 在 `SkipLayerGuidanceDiTSimple` 中设 `single_layers="22"` |
+| **分辨率 (Resolution)** | `1024×1024` 或宽屏       | 需为 16 的倍数                                      |
+
 ## 文档
 
 使用说明请参考上游的[安装与使用指南](https://github.com/OpenMOSS/MOSS-Image/blob/main/comfyui/README.md)。
 
-示例工作流见 [`example_workflows/moss-image.json`](example_workflows/moss-image.json)。
-
-## 模型权重
-
-权重需单独从 [MOSS-Image-Base](https://huggingface.co/OpenMOSS-Team/MOSS-Image-Base) 下载。将 HF Loader 的 `model_path` 指向包含 `transformer/`、`text_encoder/`、`tokenizer/`、`vae/` 的本地目录。
+示例工作流见 [`example_workflows/image_moss_sft_int8_t2i.json`](example_workflows/image_moss_sft_int8_t2i.json)。
 
 ## 许可证
 

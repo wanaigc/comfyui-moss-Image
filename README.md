@@ -9,6 +9,15 @@ Native MOSS-Image loaders for ComfyUI that output standard MODEL, CLIP and VAE o
 
 Forked from [OpenMOSS/MOSS-Image](https://github.com/OpenMOSS/MOSS-Image) (the `comfyui/` subtree), republished as a standalone custom node.
 
+## Installation
+
+```bash
+cd ComfyUI/custom_nodes
+git clone https://github.com/wanaigc/comfyui-moss-Image.git
+```
+
+Restart ComfyUI. The plugin uses ComfyUI's bundled Python dependencies, no extra install step is required.
+
 ## Documentation
 
 See the upstream [installation and usage guide](https://github.com/OpenMOSS/MOSS-Image/blob/main/comfyui/README.md).

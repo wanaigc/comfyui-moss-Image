@@ -1,7 +1,7 @@
 [project]
-name = "moss-image"
+name = "comfyui-moss-Image"
 version = "0.1.1"
-description = "Native MOSS-Image model loaders for ComfyUI"
+description = "Native MOSS-Image loaders for ComfyUI that output standard MODEL, CLIP and VAE objects, so you can use ComfyUI's own sampling, guidance and memory management nodes."
 license = { file = "LICENSE" }
 requires-python = ">=3.10"
 dependencies = []
@@ -11,6 +11,6 @@ Repository = "https://github.com/wanaigc/comfyui-moss-Image"
 Documentation = "https://github.com/wanaigc/comfyui-moss-Image/blob/main/README.md"
 
 [tool.comfy]
-PublisherId = "mosi"
-DisplayName = "MOSS-Image"
+PublisherId = "wanaigc"
+DisplayName = "comfyui-moss-Image"
 Banner = "https://raw.githubusercontent.com/OpenMOSS/MOSS-Image/main/assets/teaser.webp"

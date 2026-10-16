@@ -30,17 +30,11 @@ jobs:
             --exclude='.github' \
             --exclude='README.md' \
             --exclude='README_ZH.md' \
+            --exclude='pyproject.toml' \
             --exclude='example_workflows/moss-image-api.json' \
             --exclude='example_workflows/image_moss_sft_int8_t2i.json' \
             /tmp/upstream/comfyui/moss-image/ \
             ./
-
-      - name: Patch pyproject.toml (keep this fork's identity)
-        run: |
-          # 用上游 pyproject.toml 覆盖后，把发布者和仓库指回本 fork
-          sed -i 's|PublisherId = ".*"|PublisherId = "mosi"|' pyproject.toml
-          sed -i 's|Repository = ".*"|Repository = "https://github.com/wanaigc/comfyui-moss-Image"|' pyproject.toml
-          sed -i 's|Documentation = ".*"|Documentation = "https://github.com/wanaigc/comfyui-moss-Image/blob/main/README.md"|' pyproject.toml
 
       - name: Commit if changed
         run: |

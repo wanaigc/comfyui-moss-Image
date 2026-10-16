@@ -7,8 +7,8 @@ requires-python = ">=3.10"
 dependencies = []
 
 [project.urls]
-Repository = "https://github.com/OpenMOSS/MOSS-Image"
-Documentation = "https://github.com/OpenMOSS/MOSS-Image/blob/main/comfyui/README.md"
+Repository = "https://github.com/wanaigc/comfyui-moss-Image"
+Documentation = "https://github.com/wanaigc/comfyui-moss-Image/blob/main/README.md"
 
 [tool.comfy]
 PublisherId = "mosi"

@@ -29,6 +29,9 @@ jobs:
           rsync -av --delete \
             --exclude='.github' \
             --exclude='README.md' \
+            --exclude='README_ZH.md' \
+            --exclude='example_workflows/moss-image-api.json' \
+            --exclude='example_workflows/image_moss_sft_int8_t2i.json' \
             /tmp/upstream/comfyui/moss-image/ \
             ./
 

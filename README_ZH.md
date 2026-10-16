@@ -28,7 +28,7 @@ git clone https://github.com/wanaigc/comfyui-moss-Image.git
 | **Text Encoder** | `text_encoders/qwen35_moss_int8_convrot.safetensors`         | 8.65 GB | INT8 ConvRot（SSM、Layer 31 为 BF16）           |
 | **VAE**          | `vae/flux2-vae.safetensors`                                    | 238 MB  | FP32（FLUX.2 Small Decoder，384ch）             |
 
-下载地址：[夸克网盘](https://pan.quark.cn/s/2c5661248312)（国内加速）
+下载地址：[夸克网盘](https://pan.quark.cn/s/2c5661248312)（国内加速） · [HuggingFace](https://huggingface.co/XCEED123/MOSS-Image-SFT-INT8-ComfyUI)
 
 将文件放到 ComfyUI 对应目录：
 

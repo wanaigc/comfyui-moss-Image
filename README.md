@@ -30,7 +30,7 @@ Restart ComfyUI. The plugin uses ComfyUI's bundled Python dependencies, no extra
 | **Text Encoder** | `text_encoders/qwen35_moss_int8_convrot.safetensors`       | 8.65 GB | INT8 ConvRot (SSM & Layer 31 in BF16)           |
 | **VAE**          | `vae/flux2-vae.safetensors`                                | 238 MB  | FP32 (FLUX.2 Small Decoder, 384ch)              |
 
-Download: [Quark Pan](https://pan.quark.cn/s/2c5661248312) (国内加速)
+Download: [Quark Pan](https://pan.quark.cn/s/2c5661248312) (国内加速) · [HuggingFace](https://huggingface.co/XCEED123/MOSS-Image-SFT-INT8-ComfyUI)
 
 Place the files in your ComfyUI directories:
 

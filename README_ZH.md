@@ -13,6 +13,16 @@ Fork 自 [OpenMOSS/MOSS-Image](https://github.com/OpenMOSS/MOSS-Image)（原仓 
 
 ## 安装
 
+**方式一：Comfy CLI / ComfyUI-Manager（推荐）**
+
+```bash
+comfy node install comfyui-moss-Image
+```
+
+或在 ComfyUI-Manager → Custom Nodes → Install 中搜索 `comfyui-moss-Image`。
+
+**方式二：手动 git clone**
+
 ```bash
 cd ComfyUI/custom_nodes
 git clone https://github.com/wanaigc/comfyui-moss-Image.git

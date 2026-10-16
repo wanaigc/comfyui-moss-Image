@@ -13,6 +13,16 @@ Forked from [OpenMOSS/MOSS-Image](https://github.com/OpenMOSS/MOSS-Image) (the `
 
 ## Installation
 
+**Option 1: Comfy CLI / ComfyUI-Manager (recommended)**
+
+```bash
+comfy node install comfyui-moss-Image
+```
+
+Or search for `comfyui-moss-Image` in ComfyUI-Manager → Custom Nodes → Install.
+
+**Option 2: Manual git clone**
+
 ```bash
 cd ComfyUI/custom_nodes
 git clone https://github.com/wanaigc/comfyui-moss-Image.git

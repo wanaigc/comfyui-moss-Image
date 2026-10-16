@@ -1,0 +1,52 @@
+name: Sync upstream moss-image
+
+on:
+  schedule:
+    - cron: '0 */6 * * *'   # 每 6 小时同步一次
+  workflow_dispatch:        # 支持手动触发
+
+permissions:
+  contents: write
+
+jobs:
+  sync:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout self
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 1
+
+      - name: Checkout upstream (sparse)
+        run: |
+          git clone --depth 1 --filter=blob:none --sparse \
+            https://github.com/OpenMOSS/MOSS-Image.git /tmp/upstream
+          cd /tmp/upstream
+          git sparse-checkout set comfyui/moss-image
+
+      - name: Sync files from upstream comfyui/moss-image
+        run: |
+          rsync -av --delete \
+            --exclude='.github' \
+            --exclude='README.md' \
+            /tmp/upstream/comfyui/moss-image/ \
+            ./
+
+      - name: Patch pyproject.toml (keep this fork's identity)
+        run: |
+          # 用上游 pyproject.toml 覆盖后，把发布者和仓库指回本 fork
+          sed -i 's|PublisherId = ".*"|PublisherId = "mosi"|' pyproject.toml
+          sed -i 's|Repository = ".*"|Repository = "https://github.com/wanaigc/comfyui-moss-Image"|' pyproject.toml
+          sed -i 's|Documentation = ".*"|Documentation = "https://github.com/wanaigc/comfyui-moss-Image/blob/main/README.md"|' pyproject.toml
+
+      - name: Commit if changed
+        run: |
+          git config user.name  "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add -A
+          if git diff --staged --quiet; then
+            echo "No upstream changes to sync."
+          else
+            git commit -m "chore: sync from OpenMOSS/MOSS-Image (comfyui/moss-image)"
+            git push
+          fi

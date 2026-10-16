@@ -1,5 +1,7 @@
 # MOSS-Image for ComfyUI
 
+English | [中文](./README_ZH.md)
+
 ![version](https://img.shields.io/badge/version-v0.1.1-blue)
 ![python](https://img.shields.io/badge/python-%3E%3D3.10-blue)
 ![comfyui](https://img.shields.io/badge/ComfyUI-native-green)

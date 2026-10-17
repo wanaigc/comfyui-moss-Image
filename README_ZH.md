@@ -42,6 +42,8 @@ Comfy-Org 官方量化版：[夸克网盘](https://pan.quark.cn/s/60374eabb878) 
 
 XCEED123 INT8 ConvRot 版：[夸克网盘](https://pan.quark.cn/s/2c5661248312)（国内加速） · [HuggingFace](https://huggingface.co/XCEED123/MOSS-Image-SFT-INT8-ComfyUI)
 
+原始权重（OpenMOSS 官方）：[MOSS-Image-Base](https://huggingface.co/OpenMOSS-Team/MOSS-Image-Base) · [MOSS-Image-SFT](https://huggingface.co/OpenMOSS-Team/MOSS-Image-SFT)
+
 将文件放到 ComfyUI 对应目录：
 
 ```

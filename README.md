@@ -44,6 +44,8 @@ Comfy-Org official quantized build: [Quark Pan](https://pan.quark.cn/s/60374eabb
 
 XCEED123 INT8 ConvRot build: [Quark Pan](https://pan.quark.cn/s/2c5661248312) (国内加速) · [HuggingFace](https://huggingface.co/XCEED123/MOSS-Image-SFT-INT8-ComfyUI)
 
+Original weights (OpenMOSS): [MOSS-Image-Base](https://huggingface.co/OpenMOSS-Team/MOSS-Image-Base) · [MOSS-Image-SFT](https://huggingface.co/OpenMOSS-Team/MOSS-Image-SFT)
+
 Place the files in your ComfyUI directories:
 
 ```

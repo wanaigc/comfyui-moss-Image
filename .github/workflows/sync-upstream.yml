@@ -13,9 +13,10 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout self
-        uses: actions/checkout@v4
+        uses: actions/checkout@v5
         with:
           fetch-depth: 1
+          ref: main
 
       - name: Checkout upstream (sparse)
         run: |
@@ -45,5 +46,5 @@ jobs:
             echo "No upstream changes to sync."
           else
             git commit -m "chore: sync from OpenMOSS/MOSS-Image (comfyui/moss-image)"
-            git push
+            git push origin HEAD:main
           fi

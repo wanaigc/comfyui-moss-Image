@@ -2,8 +2,8 @@ name: Sync upstream moss-image
 
 on:
   schedule:
-    - cron: '0 */6 * * *'   # 每 6 小时同步一次
-  workflow_dispatch:        # 支持手动触发
+    - cron: '0 */6 * * *'
+  workflow_dispatch:
 
 permissions:
   contents: write
@@ -22,8 +22,7 @@ jobs:
         run: |
           git clone --depth 1 --filter=blob:none --sparse \
             https://github.com/OpenMOSS/MOSS-Image.git /tmp/upstream
-          cd /tmp/upstream
-          git sparse-checkout set comfyui/moss-image
+          git -C /tmp/upstream sparse-checkout set comfyui/moss-image
 
       - name: Sync files from upstream comfyui/moss-image
         run: |
@@ -35,23 +34,17 @@ jobs:
             --exclude='example_workflows/moss-image-api.json' \
             --exclude='example_workflows/image_moss_sft_int8_t2i.json' \
             /tmp/upstream/comfyui/moss-image/ \
-            ./
+            "$GITHUB_WORKSPACE/"
 
       - name: Commit if changed
+        working-directory: ${{ github.workspace }}
         run: |
-          cd $GITHUB_WORKSPACE
           git config user.name  "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
           git add -A
           if git diff --staged --quiet; then
             echo "No upstream changes to sync."
           else
-            echo "=== DIAG ==="
-            git branch --show-current
-            git remote -v
-            git status
-            echo "=== COMMIT ==="
             git commit -m "chore: sync from OpenMOSS/MOSS-Image (comfyui/moss-image)"
-            echo "=== PUSH ==="
-            git push origin HEAD:main 2>&1
+            git push origin HEAD:main
           fi

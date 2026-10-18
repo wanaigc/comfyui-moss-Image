@@ -45,6 +45,12 @@ jobs:
           if git diff --staged --quiet; then
             echo "No upstream changes to sync."
           else
+            echo "=== DIAG ==="
+            git branch --show-current
+            git remote -v
+            git status
+            echo "=== COMMIT ==="
             git commit -m "chore: sync from OpenMOSS/MOSS-Image (comfyui/moss-image)"
+            echo "=== PUSH ==="
             git push origin HEAD:main 2>&1
           fi

@@ -27,6 +27,7 @@ jobs:
       - name: Sync files from upstream comfyui/moss-image
         run: |
           rsync -av --delete \
+            --exclude='.git' \
             --exclude='.github' \
             --exclude='README.md' \
             --exclude='README_ZH.md' \

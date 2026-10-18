@@ -10,7 +10,7 @@ permissions:
 
 jobs:
   sync:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-24.04
     steps:
       - name: Checkout self
         uses: actions/checkout@v5
@@ -46,5 +46,5 @@ jobs:
             echo "No upstream changes to sync."
           else
             git commit -m "chore: sync from OpenMOSS/MOSS-Image (comfyui/moss-image)"
-            git push origin HEAD:main
+            git push origin HEAD:main 2>&1
           fi
